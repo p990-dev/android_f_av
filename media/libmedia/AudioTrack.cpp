@@ -53,6 +53,7 @@ namespace android {
 
 // static
 
+#ifdef LEGACY_OMX
 uint32_t AudioTrack::latency() const { return mLatency; }
 audio_stream_type_t  AudioTrack::streamType() const { return mStreamType; }
 audio_format_t  AudioTrack::format() const  { return mFormat; }
@@ -66,6 +67,7 @@ extern "C" int _ZNK7android10AudioTrack12getSessionIdEv();
 extern "C" int _ZN7android10AudioTrack12getSessionIdEv() {
     return _ZNK7android10AudioTrack12getSessionIdEv();
 }
+#endif
 
 status_t AudioTrack::getMinFrameCount(
         size_t* frameCount,
@@ -114,6 +116,7 @@ status_t AudioTrack::getMinFrameCount(
     return NO_ERROR;
 }
 
+#ifdef LEGACY_OMX
 // ---------------------------------------------------------------------------
 // DEPRECATED
 AudioTrack::AudioTrack(
@@ -141,8 +144,7 @@ AudioTrack::AudioTrack(
             frameCount, (audio_output_flags_t)flags, cbf, user, notificationFrames,
             0 /*sharedBuffer*/, false /*threadCanCallJava*/, sessionId);
 }
-
-
+#endif
 
 AudioTrack::AudioTrack()
     : mCblk(NULL),
