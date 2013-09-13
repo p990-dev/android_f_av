@@ -275,18 +275,17 @@ public:
      * channelCount is determined from channelMask, and bit depth comes from format.
      * For non-linear formats, the frame size is typically 1 byte.
      */
-
 #ifdef LEGACY_OMX
             uint32_t    channelCount() const;
 
-            uint32_t    frameCount() const;
-            size_t      frameSize() const;
+            uint32_t    frameCount() const;  
+            size_t      frameSize() const;  
 #else
             uint32_t    channelCount() const { return mChannelCount; }
  
             uint32_t    frameCount() const  { return mFrameCount; }
             size_t      frameSize() const   { return mFrameSize; }
-#endif
+#elseif
 
     /* Return the static buffer specified in constructor or set(), or 0 for streaming mode */
             sp<IMemory> sharedBuffer() const { return mSharedBuffer; }
