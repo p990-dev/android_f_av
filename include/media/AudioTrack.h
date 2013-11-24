@@ -637,6 +637,7 @@ protected:
     SchedPolicy             mPreviousSchedulingGroup;
     AudioTrackClientProxy*  mProxy;
     bool                    mAwaitBoost;    // thread should wait for priority boost before running
+    audio_io_handle_t       mOutput;
 };
 
 class TimedAudioTrack : public AudioTrack
